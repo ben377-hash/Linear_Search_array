@@ -1,39 +1,43 @@
-#include <stdio.h>
-int linear(long int a[],int n,int key)
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool linear(const vector<long int>& a, int key)
 {
-    for(int i=0;i<n;i++)
+    for(int i = 0; i < a.size(); i++)
     {
-        if(a[i]==key)
+        if(a[i] == key)
         {
-            return 1;
+            return true;
         }
+    }
+    return false;
+}
+
+int main() {
+    vector<long int> a;
+    int n;
+    cout << "Enter the size";
+    cin >> n;
+    a.resize(n);
+    int key;
+    cout << "Enter the elements :\n";
+    for(int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    cout << "Enter the key :";
+    cin >> key;
+    bool x = linear(a, key);
+    if(!x)
+    {
+        cout << "Not found";
+    }
+    else
+    {
+        cout << "Found";
     }
     return 0;
 }
-int main() {
-   long int a[20];
-  int n;
-  printf("Enter the size");
-  scanf("%d",&n);
-   int key;
-   printf("Enter the elements :\n");
-   for(int i=0;i<n;i++)
-   {
-       scanf("%d",&a[i]);
-   }
-   printf("Enter the key :");
-   scanf("%d",&key);
-   
-   
-  int x=linear(a,n,key);
-  if(x==0)
-  {
-      printf("Not found");
-  }
-  else
-  {
-      printf("Found");
-  }
-   
-    return 0;
-}
+
+
